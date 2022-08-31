@@ -10,6 +10,7 @@ class SingleBook extends Component {
 
     render() {
         return (
+            // key={this.props.key} non posso metterlo nemmeno in card
             <Card style={{ width: "18rem" }}>
                 <Card.Img variant="top" src={this.props.book.img} />
                 <Card.Body>

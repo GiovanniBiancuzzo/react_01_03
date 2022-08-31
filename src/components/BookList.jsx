@@ -15,8 +15,9 @@ class BookList extends Component {
                 <Row wrap>
                     {this.props.books.map((book, index) => {
                         return (
-                            <Col>
-                                <SingleBook book={book} key={index} />
+                            <Col key={index}>
+                                {/* key={index}    perché non posso mettere key in un componente e passarlo come props? */}
+                                <SingleBook book={book} />
                             </Col>
                         );
                     })}
