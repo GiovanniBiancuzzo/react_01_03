@@ -10,17 +10,19 @@ class BookList extends Component {
     filterBookList(text) {}
 
     render() {
-        return this.props.books.map((book, index) => {
-            return (
-                <Container>
-                    <Row wrap>
-                        <Col>
-                            <SingleBook book={book} key={index} />
-                        </Col>
-                    </Row>
-                </Container>
-            );
-        });
+        return (
+            <Container>
+                <Row wrap>
+                    {this.props.books.map((book, index) => {
+                        return (
+                            <Col>
+                                <SingleBook book={book} key={index} />
+                            </Col>
+                        );
+                    })}
+                </Row>
+            </Container>
+        );
     }
 }
 
