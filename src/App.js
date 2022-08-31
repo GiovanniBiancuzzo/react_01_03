@@ -10,7 +10,7 @@ import BookList from './components/BookList';
 // console.log(book);
 function App () {
   return (
-    <div>
+    <div className='App'>
 
       <WarningSign alert="Alert di React Bootstrap" />
       <MyBadge text="Questo è un badge personalizzato" color="success" />
