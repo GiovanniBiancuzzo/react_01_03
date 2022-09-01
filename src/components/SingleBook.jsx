@@ -7,22 +7,37 @@ import { Component } from "react";
 import { Button, Card } from "react-bootstrap";
 
 class SingleBook extends Component {
-    // state = {
-    //     selected: false,
-    // };
+    state = {
+        selected: false,
+    };
 
     render() {
         return (
-            <Card style={{ width: "18rem" }}>
+            <Card
+                style={{
+                    width: "18rem",
+                    // borderColor: this.state.selected ? "#dc3545" : "#212529",
+                    // borderWidth: this.state.selected ? "10px" : "5px",
+                    border: this.state.selected
+                        ? "10px solid #dc3545"
+                        : "3px solid #212529",
+                }}
+            >
                 <Card.Img variant="top" src={this.props.book.img} />
                 <Card.Body>
                     <Card.Title>{this.props.book.title}</Card.Title>
-                    <Card.Text>{this.props.book.category}</Card.Text>
+                    <Card.Text>
+                        <b>Genere</b>: {this.props.book.category}
+                    </Card.Text>
                     <Button
                         variant="primary"
-                        // onClick={this.setState({ selected: true })}
+                        onClick={() =>
+                            this.setState({
+                                selected: this.state.selected ? false : true,
+                            })
+                        }
                     >
-                        {this.props.price}
+                        {this.props.book.price} €
                     </Button>
                 </Card.Body>
             </Card>

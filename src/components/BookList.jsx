@@ -11,18 +11,26 @@ class BookList extends Component {
         search: "",
     };
 
-    filterBookList(text) {}
+    //mio tentativo estremamente più complicato
+    // async filterBookList(e) {
+    //     e.preventDefault();
+    //     // console.log(this.state.search);
+    //     this.props.books = await this.props.books.filter((book) =>
+    //         book.contains(this.state.search)
+    //     );
+    // }
 
     render() {
         return (
             <Container>
-                <Form>
+                <Form onSubmit={this.filterBookList}>
                     <Form.Group>
                         <Form.Control
                             type="text"
                             placeholder="Cerca un libro..."
                             value={this.state.search}
                             onChange={(e) => {
+                                console.log(e.target.value);
                                 this.setState({
                                     search: e.target.value,
                                 });
@@ -30,14 +38,18 @@ class BookList extends Component {
                         />
                     </Form.Group>
                 </Form>
-                <Row wrap>
-                    {this.props.books.map((book, index) => {
-                        return (
-                            <Col key={index}>
-                                <SingleBook book={book} />
-                            </Col>
-                        );
-                    })}
+                <Row>
+                    {this.props.books
+                        .filter((book) =>
+                            book.title.toLowerCase().includes(this.state.search)
+                        )
+                        .map((book, index) => {
+                            return (
+                                <Col key={index}>
+                                    <SingleBook book={book} />
+                                </Col>
+                            );
+                        })}
                 </Row>
             </Container>
         );
